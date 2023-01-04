@@ -21,7 +21,7 @@ void *Channel::work(void *data)
 		int count = min(tinfo->count, int(2600 / (0.01 * tinfo->sound->length())));
 		int fout = min(tinfo->count * tinfo->sound->length() * 0.2, 10000.);
 		int to = tinfo->count * tinfo->sound->length() - fout;
-		cout << "[" << tinfo->channel->id << "] " << tinfo->sound->name() << " , length = " << (tinfo->sound->length() / 1000) << ", " << (count + 1) << " times, fade out in " << int(to / 1000.) << " seconds" << endl;
+		// cout << "[" << tinfo->channel->id << "] " << tinfo->sound->name() << " , length = " << (tinfo->sound->length() / 1000) << ", " << (count + 1) << " times, fade out in " << int(to / 1000.) << " seconds" << endl;
 		if (Mix_FadeInChannel(tinfo->channel->id, tinfo->sound->data(), tinfo->count, min(10000., tinfo->sound->length() * 0.2)) != -1)
 		{
 			usleep(1000 * to);
@@ -98,7 +98,7 @@ int Channel::init(const int channels)
 	{
 		Channel::channels.push_back(new Channel(i));
 	}
-	cout << "Created " << real << " channels" << endl;
+	//cout << "Created " << real << " channels" << endl;
 	return real;
 }
 

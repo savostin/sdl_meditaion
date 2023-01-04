@@ -80,6 +80,8 @@ void Lines::reset()
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_ADD);
+	ticks = 0;
+	add = 1;
 	Point::base = rand() % 360;
 	int j;
 	int psize = points.size();

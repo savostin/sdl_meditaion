@@ -66,13 +66,22 @@ int main()
 	{
 		while (SDL_PollEvent(&e))
 		{
-			if (e.type == SDL_QUIT) {
+			switch (e.type)
+			{
+			case SDL_QUIT:
 				running = false;
 				quit = true;
+				break;
+			case SDL_WINDOWEVENT:
+				if (e.window.event == SDL_WINDOWEVENT_RESIZED)
+				{
+					video.resized();
+				}
+				break;
 			}
 		}
-	video.tick();
-	usleep(100);
+		video.tick();
+		usleep(100);
 	}
 
 	pthread_join(thread, NULL);
