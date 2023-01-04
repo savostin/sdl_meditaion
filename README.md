@@ -1,6 +1,8 @@
 # SDL meditaion
 ## Some experiments with SDL2
 
+![Screenshot](screenshot.png)
+
 * Uses SDL2 Mixer lib to mix calm mp3 in 4 channels
 * Draws beautiful colorful lines
 
