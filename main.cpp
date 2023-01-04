@@ -49,7 +49,7 @@ int main()
 	signal(SIGINT, on_close);
 	pthread_t thread;
 
-	Channel::init(0);
+	Channel::init(4);
 	Video video(VIS_LINES);
 
 	vector<string> files = globVector("./mp3/*.mp3");
