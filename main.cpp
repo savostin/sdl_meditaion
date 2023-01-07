@@ -30,8 +30,8 @@ static void *work(void *)
 	srand(time(NULL));
 	while (running)
 	{
-		usleep(1000000);
 		Channel::check();
+		usleep(1 * 1000 * 1000);
 	}
 	Channel::cleanup();
 	exit(EXIT_SUCCESS);
@@ -60,29 +60,9 @@ int main()
 	running = true;
 
 	pthread_create(&thread, NULL, work, NULL);
-	SDL_Event e;
-	bool quit = false;
-	while (quit == false)
-	{
-		while (SDL_PollEvent(&e))
-		{
-			switch (e.type)
-			{
-			case SDL_QUIT:
-				running = false;
-				quit = true;
-				break;
-			case SDL_WINDOWEVENT:
-				if (e.window.event == SDL_WINDOWEVENT_RESIZED)
-				{
-					video.resized();
-				}
-				break;
-			}
-		}
-		video.tick();
-		usleep(100);
-	}
+
+	video.run();
+	running = false;
 
 	pthread_join(thread, NULL);
 
