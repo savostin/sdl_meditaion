@@ -40,4 +40,29 @@ void Video::resized()
 		visualisation->setSize(width, height);
 }
 
+void Video::run()
+{
+	SDL_Event e;
+	bool quit = false;
+	while (quit == false)
+	{
+		while (SDL_PollEvent(&e))
+		{
+			switch (e.type)
+			{
+			case SDL_QUIT:
+				quit = true;
+				break;
+			case SDL_WINDOWEVENT:
+				if (e.window.event == SDL_WINDOWEVENT_RESIZED)
+				{
+					resized();
+				}
+				break;
+			}
+		}
+		tick();
+		SDL_Delay(100);
+	}
+}
 

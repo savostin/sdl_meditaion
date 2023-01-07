@@ -11,9 +11,10 @@ private:
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 	Visualisation* visualisation;
+	void tick();
+	void resized();
 public:
 	Video(VisualisationType type);
 	~Video();
-	void tick();
-	void resized();
+	void run();
 };

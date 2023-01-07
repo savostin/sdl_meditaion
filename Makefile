@@ -1,7 +1,7 @@
-LNK_OPT = -g -std=c++11 -lsdl2 -lsdl2_mixer -lpthread
+LNK_OPT = -std=c++11 -lsdl2 -lsdl2_mixer -lpthread
 
 all:
-	g++ -g */*.cpp *.cpp -o meditation $(LNK_OPT)
+	g++ */*.cpp *.cpp -o meditation $(LNK_OPT)
 
 clean:
 	rm -f *.o
